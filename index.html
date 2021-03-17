@@ -8,32 +8,32 @@
         <script src="script.js" defer></script>
     </head>
     <body>
-        <h1 class="title">MyLibrary</h1>
+        <header>
+            <h1 class="title">MyLibrary</h1>
+        </header>
         <hr>
-<div id='btn-container'>
-  <button type="button" id='new-book'>New Book</button>
-</div>
-<div id='form' class='form'>
-  <div class='form-content'>
-    <span class="close">&times;</span>
-    <h2>Add new book</h2>
-    <form>
-      <input type="text" placeholder="Title" id="form-title"> <br>
-      <input type="text" placeholder="Author" id="form-author"> <br>
-      <input type="text" placeholder ="No. of pages" id="form-pages"> <br>
-      <label class="switch">
-        <input type="checkbox">
-        <span class="slider round"></span>
-      </label> Read <br>
-      <button type="button" id="add-book">+ Add</button>
-    </form>
-  </div>
-</div>
+        <div id='btn-container'>
+            <button type="button" id='new-book'>New Book</button>
+        </div>
+        <div id='form' class='form'>
+            <div class='form-content'>
+                <span class="close">&times;</span>
+                <h2>Add new book</h2>
+               <form>
+                    <input type="text" placeholder="Title" id="form-title"> <br>
+                    <input type="text" placeholder="Author" id="form-author"> <br>
+                    <input type="text" placeholder ="No. of pages" id="form-pages"> <br>
+                    <label class="switch">
+                        <input type="checkbox" id="form-read">
+                        <span class="slider round"></span>
+                    </label> Read <br>
+                    <button type="button" id="add-book">+ Add</button>
+                </form>
+            </div>
+        </div>
 
-<main>
-  <div id='book-grid'>
-    
-  </div>
-</main>
+        <main>
+            <div id='book-grid'></div>
+        </main>
     </body>
 </html>
