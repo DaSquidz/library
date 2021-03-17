@@ -7,12 +7,12 @@ const form = document.getElementById('form');
 const newBookBtn = document.getElementById('new-book');
 const closeFormBtn = document.getElementById('close-btn');
 
+const formFields = document.getElementById('form-fields');
 const formTitle =  document.getElementById('form-title');
 const formAuthor =  document.getElementById('form-author');
 const formPages =  document.getElementById('form-pages');
 const formRead =  document.getElementById('form-read');
 const addBookBtn =  document.getElementById('add-book');
-const formButtons = [formTitle, formAuthor, formPages, formRead];
 
 newBookBtn.addEventListener('click', () => form.style.display = "block");
 closeFormBtn.addEventListener('click', () => form.style.display = "none");
@@ -33,12 +33,6 @@ function addBookToLibrary(title, author, pages, read) {
     myLibrary.push(newBook);
 }
 
-//2 books already defined for testing
-addBookToLibrary('Inferno', 'Dante', 656, true);
-addBookToLibrary('Paradiso', 'Virgil', 295, false);
-let Inferno = myLibrary[0];
-
-//clear the grid first,and then populate to avoid duplicates
 function populateGrid(){
   clearGrid();
   for(let i = 0; i < myLibrary.length; i++){
@@ -57,6 +51,17 @@ function clearGrid(){
 }
 
 addBookBtn.addEventListener('click', function() {
-    addBookToLibrary(formTitle.value, formAuthor.value, formPages.value, formRead.checked)
-    formButtons.forEach(() => this.value = "");
+    if(formTitle.value !== "") {
+        if(formAuthor.value !== ""){ 
+            if(formPages.value !== ""){
+            addBookToLibrary(formTitle.value, formAuthor.value, formPages.value, formRead.checked)
+            form.style.display = "none";
+            formFields.reset();
+            populateGrid();
+            }
+            else alert("Invalid number of pages");
+        }
+        else alert("Invalid author");
+    }
+    else alert("Invalid title");
 });

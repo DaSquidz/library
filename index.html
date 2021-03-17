@@ -19,7 +19,7 @@
             <div class='form-content'>
                 <span class="close" id="close-btn">&times;</span>
                 <h2>Add new book</h2>
-               <form onsubmit="return false">
+               <form onsubmit="return false" id="form-fields">
                     <input type="text" placeholder="Title" id="form-title" required> <br>
                     <input type="text" placeholder="Author" id="form-author" required> <br>
                     <input type="number" min="0" placeholder ="No. of pages" id="form-pages" required> <br>
@@ -27,7 +27,7 @@
                         <input type="checkbox" id="form-read">
                         <span class="slider round"></span>
                     </label> Read <br>
-                    <button type="submit" id="add-book">+ Add</button>
+                    <button type="button" id="add-book">Add</button>
                 </form>
             </div>
         </div>
