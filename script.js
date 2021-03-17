@@ -45,9 +45,7 @@ function populateGrid(){
     removeButton.className = 'remove-btn';
 
     removeButton.value = i;
-    removeButton.addEventListener('click', function() {
-        removeBook(removeButton.value);
-    });
+    removeButton.addEventListener('click', () => removeBook(removeButton.value));
 
     bookInfo.textContent = myLibrary[i].info();
     removeButton.innerText = 'Remove';
@@ -57,7 +55,7 @@ function populateGrid(){
     bookCard.appendChild(cardFunctions);
 
     bookGrid.appendChild(bookCard);
-  }
+  };
 };
 function clearGrid(){
   document.querySelectorAll('.book').forEach(function(book){
@@ -79,9 +77,7 @@ addBookBtn.addEventListener('click', function() {
     }
     else alert("Invalid title");
 });
-
 function removeBook(value) {
     myLibrary.splice(value, 1);
     populateGrid();
-}
-//removeButtons.addEventListener('click', removeBook(removeButtons.indexOf(this)))
+};
