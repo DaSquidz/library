@@ -14,7 +14,7 @@ const formRead      = document.getElementById('form-read');
 const addBookBtn    = document.getElementById('add-book');
 let removeButtons   = document.getElementsByClassName('remove-btn');
 
-newBookBtn.addEventListener('click', () =>      form.style.display = "block");
+newBookBtn.addEventListener('click', () =>      form.style.display = "flex");
 closeFormBtn.addEventListener('click', () =>    form.style.display = "none");
 window.addEventListener('click', (event) =>     {if(event.target == form)form.style.display = "none"});
 
@@ -40,6 +40,7 @@ function populateGrid(){
     const bookCard      = document.createElement('div');
     const bookInfo      = document.createElement('div');
     const cardFunctions = document.createElement('div');
+    const readDiv       = document.createElement('div');
     const readCheckbox  = document.createElement('input');
     const readLabel     = document.createElement('label');
     const removeButton  = document.createElement('button');
@@ -60,10 +61,11 @@ function populateGrid(){
     removeButton.addEventListener('click', () => removeBook(removeButton.value));
 
     bookInfo.innerText = myLibrary[i].info();
-    removeButton.innerText = 'Remove';
-
-    cardFunctions.appendChild(readCheckbox);
-    cardFunctions.appendChild(readLabel);
+    removeButton.innerText = 'Remove book';
+    
+    readDiv.appendChild(readCheckbox);
+    readDiv.appendChild(readLabel);
+    cardFunctions.appendChild(readDiv);
     cardFunctions.appendChild(removeButton);
     bookCard.appendChild(bookInfo);
     bookCard.appendChild(cardFunctions);
