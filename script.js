@@ -32,6 +32,7 @@ function Book(title, author, pages, read) {
 };
 function addBookToLibrary(title, author, pages, read) {
     let newBook = new Book(title, author, pages, read);
+    saveLibrary();
     myLibrary.push(newBook);
 };
 function populateGrid(){
@@ -55,6 +56,7 @@ function populateGrid(){
     readCheckbox.addEventListener('change', function() {
       if(this.checked) myLibrary[i].read = true
       else myLibrary[i].read = false;
+      saveLibrary();
     });
     removeButton.value = i;
     removeButton.addEventListener('click', () => removeBook(removeButton.value));
@@ -94,5 +96,18 @@ addBookBtn.addEventListener('click', function() {
 });
 function removeBook(value) {
     myLibrary.splice(value, 1);
+    saveLibrary();
     populateGrid();
 };
+
+
+function saveLibrary() {
+  localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+}
+function loadLibrary() {
+  myLibrary = JSON.parse(localStorage.getItem("myLibrary"));
+  if (myLibrary === null) myLibrary = [];
+  populateGrid();
+}
+
+loadLibrary();
