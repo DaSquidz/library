@@ -5,7 +5,8 @@
 }
 
 body {
-    background-image: url(https://images.pexels.com/photos/1907785/pexels-photo-1907785.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260)
+  background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url('bg.jpg');
+  background-size: cover;
 }
 
 h2 {
@@ -28,8 +29,8 @@ hr {
 /* new book button stuff */
 #new-book {
   position: fixed;
-  bottom: 1vh;
-  right: 1vw;
+  bottom: 5vh;
+  right: 5vw;
   height: 100px;
   width: 100px;
   border-radius: 50%;
@@ -39,7 +40,6 @@ hr {
   border: 2px solid white;
   box-shadow: 2px 2px 5px rgba(255, 255, 255, 0.85);
   z-index: 1;
-  /* add media query later */
   font-size: 25px;
 }
 #new-book:focus{
