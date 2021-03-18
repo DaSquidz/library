@@ -24,11 +24,6 @@ function Book(title, author, pages, read) {
   this.pages      = pages;
   this.read       = read;
   let readValue = read === true ? 'Already read' : 'Not read yet';
-  let info = 
-  `${title}
-  by ${author}
-  ${pages} pages`;
-  this.info       = function() {return info};
 };
 function addBookToLibrary(title, author, pages, read) {
     let newBook = new Book(title, author, pages, read);
@@ -60,7 +55,7 @@ function populateGrid(){
     removeButton.value = i;
     removeButton.addEventListener('click', () => removeBook(removeButton.value));
 
-    bookInfo.innerText = myLibrary[i].info();
+    bookInfo.innerText = displayInfo(myLibrary[i]);
     removeButton.innerText = 'Remove book';
     
     readDiv.appendChild(readCheckbox);
@@ -94,7 +89,32 @@ addBookBtn.addEventListener('click', function() {
     }
     else alert("Invalid title");
 });
+function displayInfo(obj) {
+  let string = '';
+  string = `${obj.title}
+  by ${obj.author}
+  ${obj.pages} pages`;
+  return string;
+}
+
+
+
 function removeBook(value) {
     myLibrary.splice(value, 1);
     populateGrid();
 };
+
+function saveLibrary () {
+  localStorage.setItem('savedLibrary', JSON.stringify(myLibrary));
+}
+
+function loadLibrary () {
+  myLibrary = JSON.parse(localStorage.getItem('savedLibrary'));
+  if (myLibrary === null) {
+    myLibrary = [];
+    return;
+  };
+  populateGrid();
+}
+
+loadLibrary();
