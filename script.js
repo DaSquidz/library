@@ -26,9 +26,9 @@ function Book(title, author, pages, read) {
   let readValue = read === true ? 'Already read' : 'Not read yet';
 };
 function addBookToLibrary(title, author, pages, read) {
-    let newBook = new Book(title, author, pages, read);
-    myLibrary.push(newBook);
-    saveLibrary();
+  let newBook = new Book(title, author, pages, read);
+  myLibrary.push(newBook);
+  saveLibrary();
 };
 function populateGrid(){
   clearGrid();
@@ -73,7 +73,7 @@ function populateGrid(){
 };
 function clearGrid(){
   document.querySelectorAll('.book').forEach(function(book){
-        book.remove();
+    book.remove();
   });
 };
 addBookBtn.addEventListener('click', function() {
