@@ -12,6 +12,7 @@
             <h1 class="title">MyLibrary</h1>
         </header>
         <hr>
+        <div class="bg-image"></div>
         <div id='btn-container'>
             <button type="button" id='new-book'>New Book</button>
         </div>
@@ -20,13 +21,17 @@
                 <span class="close" id="close-btn">&times;</span>
                 <h2>Add new book</h2>
                <form onsubmit="return false" id="form-fields">
-                    <input type="text" placeholder="Title" id="form-title" required> <br>
-                    <input type="text" placeholder="Author" id="form-author" required> <br>
-                    <input type="number" min="0" placeholder ="No. of pages" id="form-pages" required> <br>
-                    <label value ="read" class="switch">
-                        <input type="checkbox" id="form-read">
-                        <span class="slider round"></span>
-                    </label> Read <br>
+                    Title:<br>
+                    <input type="text" placeholder="Title" id="form-title" class='text-input' required> <br>
+                    Author:<br>
+                    <input type="text" placeholder="Author" id="form-author" class='text-input' required> <br>
+                    Number of pages:<br>
+                    <input type="number" min="0" placeholder ="No. of pages" class='text-input' id="form-pages" required> <br>
+                    <div class="form-read-cont">
+                      <label value ="read" class="switch">
+                         <input type="checkbox" id="form-read">
+                      </label>I've already read this book
+                    </div> <br>
                     <button type="button" id="add-book">Add</button>
                 </form>
             </div>
@@ -35,5 +40,4 @@
         <main>
             <div id='book-grid'></div>
         </main>
-    </body>
 </html>
