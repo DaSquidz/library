@@ -52,6 +52,10 @@ function populateGrid(){
 
     readCheckbox.type = 'checkbox';
     readLabel.innerText = 'Finished reading';
+    readCheckbox.addEventListener('change', function() {
+      if(this.checked) myLibrary[i].read = true
+      else myLibrary[i].read = false;
+    });
     removeButton.value = i;
     removeButton.addEventListener('click', () => removeBook(removeButton.value));
 
