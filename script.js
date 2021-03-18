@@ -2,6 +2,10 @@
 
 let myLibrary = [];
 
+const DEFAULT_DATA = [
+  {title: "The Hobbit", author: "J.R.R. Tolkien", pages: "310", read: false},
+];
+
 const bookGrid      = document.getElementById('book-grid');
 const form          = document.getElementById('form');
 const newBookBtn    = document.getElementById('new-book');
@@ -32,10 +36,11 @@ function Book(title, author, pages, read) {
 };
 function addBookToLibrary(title, author, pages, read) {
     let newBook = new Book(title, author, pages, read);
-    saveLibrary();
     myLibrary.push(newBook);
+    updateLibrary();
 };
 function populateGrid(){
+  checkSavedLibrary();
   clearGrid();
   for(let i = 0; i < myLibrary.length; i++){
     const bookCard      = document.createElement('div');
@@ -56,7 +61,7 @@ function populateGrid(){
     readCheckbox.addEventListener('change', function() {
       if(this.checked) myLibrary[i].read = true
       else myLibrary[i].read = false;
-      saveLibrary();
+      updateLibrary();
     });
     removeButton.value = i;
     removeButton.addEventListener('click', () => removeBook(removeButton.value));
@@ -96,18 +101,16 @@ addBookBtn.addEventListener('click', function() {
 });
 function removeBook(value) {
     myLibrary.splice(value, 1);
-    saveLibrary();
     populateGrid();
 };
 
-
-function saveLibrary() {
+function updateLibrary() {
   localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+};
+function checkSavedLibrary() {
+  if (localStorage.getItem("myLibrary")) {
+    myLibrary = JSON.parse(localStorage.getItem("myLibrary"));
+  } else {
+    myLlibrary = DEFAULT_DATA;
+  }
 }
-function loadLibrary() {
-  myLibrary = JSON.parse(localStorage.getItem("myLibrary"));
-  if (myLibrary === null) myLibrary = [];
-  populateGrid();
-}
-
-loadLibrary();
