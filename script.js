@@ -19,13 +19,16 @@ closeFormBtn.addEventListener('click', () =>    form.style.display = "none");
 window.addEventListener('click', (event) =>     {if(event.target == form)form.style.display = "none"});
 
 function Book(title, author, pages, read) {
-    let readValue = read === true ? 'Already read' : 'Not read yet';
-
-    this.title      = title;
-    this.author     = author;
-    this.pages      = pages;
-    this.read       = read;
-    this.info       = function() {return `${title} by ${author} ${pages} pages, ${readValue}`};
+  this.title      = title;
+  this.author     = author;
+  this.pages      = pages;
+  this.read       = read;
+  let readValue = read === true ? 'Already read' : 'Not read yet';
+  let info = 
+  `${title}
+  by ${author}
+  ${pages} pages`;
+  this.info       = function() {return info};
 };
 function addBookToLibrary(title, author, pages, read) {
     let newBook = new Book(title, author, pages, read);
@@ -34,27 +37,35 @@ function addBookToLibrary(title, author, pages, read) {
 function populateGrid(){
   clearGrid();
   for(let i = 0; i < myLibrary.length; i++){
-    const bookCard = document.createElement('div');
-    const bookInfo = document.createElement('div');
+    const bookCard      = document.createElement('div');
+    const bookInfo      = document.createElement('div');
     const cardFunctions = document.createElement('div');
-    const removeButton = document.createElement('button');
+    const readCheckbox  = document.createElement('input');
+    const readLabel     = document.createElement('label');
+    const removeButton  = document.createElement('button');
 
-    bookCard.className = 'book';
-    bookInfo.className = 'book-info';
+    bookCard.className      = 'book';
+    bookInfo.className      = 'book-info';
     cardFunctions.className = 'card-func';
-    removeButton.className = 'remove-btn';
+    readCheckbox.className  = 'read-checkbox';
+    removeButton.className  = 'remove-btn';
 
+    readCheckbox.type = 'checkbox';
+    readLabel.innerText = 'Finished reading';
     removeButton.value = i;
     removeButton.addEventListener('click', () => removeBook(removeButton.value));
 
-    bookInfo.textContent = myLibrary[i].info();
+    bookInfo.innerText = myLibrary[i].info();
     removeButton.innerText = 'Remove';
-    
+
+    cardFunctions.appendChild(readCheckbox);
+    cardFunctions.appendChild(readLabel);
     cardFunctions.appendChild(removeButton);
     bookCard.appendChild(bookInfo);
     bookCard.appendChild(cardFunctions);
 
     bookGrid.appendChild(bookCard);
+    myLibrary[i].read === true ? readCheckbox.checked = true : readCheckbox.checked = false;
   };
 };
 function clearGrid(){

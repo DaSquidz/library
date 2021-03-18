@@ -11,21 +11,29 @@ hr {
     color: black;
 }
 
-.book-grid {
+/* book grid stuff */
+#book-grid {
 	display: flex;
+  flex-direction: row;
 	flex-wrap: wrap;
 }
 
 .book {
   display: flex;
+  flex-direction: column;
 	box-shadow: 5px 5px 5px grey;
-	height: 100px;
-	width: 100px;
+	height: 100%;
+	width: auto;
 	margin: 10px;
 	border-radius: 15px;
   padding: 20px
 }
 
+.card-func {
+  display: flex;
+}
+
+/* modal stuff */
 .form {
   display: none;
   position: fixed;
